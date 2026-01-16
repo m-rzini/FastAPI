@@ -1,8 +1,8 @@
 from typing import Annotated
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException, Path, Request, status
-from ..models import Todos
-from ..database import SessionLocal
+from models import Todos
+from database import SessionLocal
 from starlette import status
 from pydantic import BaseModel, Field
 from .auth import get_current_user
@@ -23,7 +23,7 @@ def get_db():
     finally:
         db.close()
 
-templates = Jinja2Templates(directory="TodoApp/templates")
+templates = Jinja2Templates(directory="templates")
 
 
 db_dependency = Annotated[Session, Depends(get_db)]
